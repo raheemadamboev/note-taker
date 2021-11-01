@@ -8,6 +8,11 @@ object DatabaseConst {
     const val VERSION = 1
 
     /**
+     * Database name
+     */
+    const val NAME = "NoteDatabase"
+
+    /**
      * Notes table
      */
     const val NOTE_TABLE = "note_table"
