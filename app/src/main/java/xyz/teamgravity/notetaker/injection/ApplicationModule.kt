@@ -11,6 +11,7 @@ import xyz.teamgravity.notetaker.feature_note.data.data_source.NoteDao
 import xyz.teamgravity.notetaker.feature_note.data.data_source.NoteDatabase
 import xyz.teamgravity.notetaker.feature_note.data.repository.NoteRepository
 import xyz.teamgravity.notetaker.feature_note.domain.repository.NoteRepositoryImpl
+import xyz.teamgravity.notetaker.feature_note.domain.use_case.AddNoteUseCase
 import xyz.teamgravity.notetaker.feature_note.domain.use_case.DeleteNoteUseCase
 import xyz.teamgravity.notetaker.feature_note.domain.use_case.GetNotesUseCase
 import javax.inject.Singleton
@@ -36,4 +37,7 @@ object ApplicationModule {
 
     @Provides
     fun provideDeleteNoteUseCase(noteRepository: NoteRepository): DeleteNoteUseCase = DeleteNoteUseCase(noteRepository)
+
+    @Provides
+    fun provideAddNoteUseCase(noteRepository: NoteRepository): AddNoteUseCase = AddNoteUseCase(noteRepository)
 }
