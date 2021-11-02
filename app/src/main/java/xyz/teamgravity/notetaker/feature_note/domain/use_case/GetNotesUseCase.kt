@@ -7,9 +7,7 @@ import xyz.teamgravity.notetaker.feature_note.domain.model.NoteModel
 import xyz.teamgravity.notetaker.feature_note.domain.util.NoteOrder
 import xyz.teamgravity.notetaker.feature_note.domain.util.OrderType
 
-class GetNotesUseCase(
-    private val repository: NoteRepository
-) {
+class GetNotesUseCase(private val repository: NoteRepository) {
 
     operator fun invoke(order: NoteOrder = NoteOrder.Date(OrderType.Descending)): Flow<List<NoteModel>> {
         return repository.getNotes().map { notes ->

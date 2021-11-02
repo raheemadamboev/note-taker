@@ -10,7 +10,7 @@ import java.util.*
 data class NoteModel(
 
     @PrimaryKey
-    val id: Int = 0,
+    val id: Int? = null,
 
     val title: String = "",
     val content: String = "",
