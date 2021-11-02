@@ -1,4 +1,4 @@
-package xyz.teamgravity.notetaker
+package xyz.teamgravity.notetaker.feature_note.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
