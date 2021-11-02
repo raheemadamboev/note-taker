@@ -8,7 +8,8 @@ import xyz.teamgravity.notetaker.feature_note.domain.model.NoteModel
 @TypeConverters(Converters::class)
 @Database(
     entities = [NoteModel::class],
-    version = DatabaseConst.VERSION
+    version = DatabaseConst.VERSION,
+    exportSchema = false
 )
 abstract class NoteDatabase : RoomDatabase() {
 

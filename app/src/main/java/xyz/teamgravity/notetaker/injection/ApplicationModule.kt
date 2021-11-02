@@ -24,7 +24,9 @@ object ApplicationModule {
     @Provides
     @Singleton
     fun provideNoteDatabase(app: Application): NoteDatabase =
-        Room.databaseBuilder(app, NoteDatabase::class.java, DatabaseConst.NAME).build()
+        Room.databaseBuilder(app, NoteDatabase::class.java, DatabaseConst.NAME)
+            .fallbackToDestructiveMigration()
+            .build()
 
     @Provides
     @Singleton

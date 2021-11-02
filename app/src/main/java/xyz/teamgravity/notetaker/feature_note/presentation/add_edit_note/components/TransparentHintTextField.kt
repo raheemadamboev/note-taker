@@ -1,7 +1,6 @@
 package xyz.teamgravity.notetaker.feature_note.presentation.add_edit_note.components
 
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material.Text
@@ -23,13 +22,13 @@ fun TransparentFieldTextField(
     singleLine: Boolean,
     onFocusChange: (FocusState) -> Unit
 ) {
-    Box(modifier = modifier.fillMaxWidth()) {
+    Box {
         BasicTextField(value = text,
             onValueChange = onValueChange,
             singleLine = singleLine,
             textStyle = textStyle,
-            modifier = Modifier
-                .fillMaxSize()
+            modifier = modifier
+                .fillMaxWidth()
                 .onFocusChanged { onFocusChange(it) }
         )
 

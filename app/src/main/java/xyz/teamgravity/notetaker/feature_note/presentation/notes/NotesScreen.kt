@@ -18,6 +18,7 @@ import androidx.navigation.NavController
 import kotlinx.coroutines.launch
 import xyz.teamgravity.notetaker.feature_note.presentation.notes.components.NoteCard
 import xyz.teamgravity.notetaker.feature_note.presentation.notes.components.OrderSection
+import xyz.teamgravity.notetaker.feature_note.presentation.util.Screen
 
 @ExperimentalAnimationApi
 @Composable
@@ -32,7 +33,9 @@ fun NotesScreen(
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(
-                onClick = { /*TODO*/ },
+                onClick = {
+                    navController.navigate(Screen.AddEditNoteScreen.route)
+                },
                 backgroundColor = MaterialTheme.colors.primary
             ) {
                 Icon(
@@ -92,7 +95,7 @@ fun NotesScreen(
                         cornerRadius = 10.dp,
                         cutCornerSize = 30.dp,
                         onClick = {
-
+                            navController.navigate(Screen.AddEditNoteScreen.route + "?noteId=${note.id}&noteColor=${note.color}")
                         },
                         onDeleteClick = {
                             viewmodel.onEvent(NotesEvent.DeleteNote(note))

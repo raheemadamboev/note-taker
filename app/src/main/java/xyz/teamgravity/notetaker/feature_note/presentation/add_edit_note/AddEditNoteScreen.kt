@@ -46,7 +46,7 @@ fun AddEditNoteScreen(
 
     LaunchedEffect(key1 = true) {
         viewmodel.eventFlow.collectLatest { event ->
-            when(event) {
+            when (event) {
                 is AddEditNoteUIEvent.ShowSnackbar -> {
                     scaffoldState.snackbarHostState.showSnackbar(message = event.message)
                 }
@@ -91,6 +91,7 @@ fun AddEditNoteScreen(
                         .size(50.dp)
                         .shadow(15.dp, CircleShape)
                         .clip(CircleShape)
+                        .background(Color(colorInt))
                         .border(
                             width = 3.dp,
                             color = if (viewmodel.noteColor.value == colorInt) Color.Black else Color.Transparent,
