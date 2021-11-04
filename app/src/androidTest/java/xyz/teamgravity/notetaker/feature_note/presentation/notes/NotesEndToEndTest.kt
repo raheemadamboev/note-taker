@@ -78,21 +78,48 @@ class NotesEndToEndTest {
 
     @Test
     fun saveNewNote_editAfterwards() {
-        composeRule.onNodeWithContentDescription("add").performClick()
+        composeRule.apply {
+            onNodeWithContentDescription("add").performClick()
 
-        composeRule.onNodeWithTag("title_edit_text").performTextInput("test-title")
-        composeRule.onNodeWithTag("content_edit_text").performTextInput("test-content")
-        composeRule.onNodeWithContentDescription("save").performClick()
+            onNodeWithTag("title_edit_text").performTextInput("test-title")
+            onNodeWithTag("content_edit_text").performTextInput("test-content")
+            onNodeWithContentDescription("save").performClick()
 
-        composeRule.onNodeWithText("test-title").assertIsDisplayed()
-        composeRule.onNodeWithText("test-title").performClick()
+            onNodeWithText("test-title").assertIsDisplayed()
+            onNodeWithText("test-title").performClick()
 
-        composeRule.onNodeWithTag("title_edit_text").assertTextEquals("test-title")
-        composeRule.onNodeWithTag("content_edit_text").assertTextEquals("test-content")
+            onNodeWithTag("title_edit_text").assertTextEquals("test-title")
+            onNodeWithTag("content_edit_text").assertTextEquals("test-content")
 
-        composeRule.onNodeWithTag("title_edit_text").performTextInput("-2")
-        composeRule.onNodeWithContentDescription("save").performClick()
+            onNodeWithTag("title_edit_text").performTextInput("-2")
+            onNodeWithContentDescription("save").performClick()
 
-        composeRule.onNodeWithText("test-title-2").assertIsDisplayed()
+            onNodeWithText("test-title-2").assertIsDisplayed()
+        }
+    }
+
+    @Test
+    fun saveNewNotes_orderByTitleDescending() {
+        composeRule.apply {
+            for (i in 1..3) {
+                onNodeWithContentDescription("add").performClick()
+
+                onNodeWithTag("title_edit_text").performTextInput(i.toString())
+                onNodeWithTag("content_edit_text").performTextInput(i.toString())
+                onNodeWithContentDescription("save").performClick()
+            }
+
+            for (i in 1..3) {
+                onNodeWithText(i.toString()).assertIsDisplayed()
+            }
+
+            onNodeWithContentDescription("sort").performClick()
+            onNodeWithContentDescription("Title").performClick()
+            onNodeWithContentDescription("Descending").performClick()
+
+            onAllNodesWithTag("note_card")[0].assertTextContains("3")
+            onAllNodesWithTag("note_card")[1].assertTextContains("2")
+            onAllNodesWithTag("note_card")[2].assertTextContains("1")
+        }
     }
 }
