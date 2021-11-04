@@ -68,7 +68,7 @@ fun NotesScreen(
                 ) {
                     Icon(
                         imageVector = Icons.Default.Sort,
-                        contentDescription = null
+                        contentDescription = "sort"
                     )
                 }
             }

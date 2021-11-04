@@ -3,6 +3,7 @@ package xyz.teamgravity.notetaker.feature_note.presentation.notes.components
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import xyz.teamgravity.notetaker.feature_note.domain.util.NoteOrder
 import xyz.teamgravity.notetaker.feature_note.domain.util.OrderType
@@ -16,6 +17,7 @@ fun OrderSection(
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 16.dp)
+            .testTag("order_section_test")
     ) {
         Row(modifier = Modifier.fillMaxWidth()) {
             DefaultRadioButton(
